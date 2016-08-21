@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 SOURCE_FILE="$1"
@@ -11,7 +10,6 @@ USAGE:
     $0 SOURCEFILE TARGETDIR
 EOF
 }
-
 
 # Check if ImageMagick installed, if not then brew install ImageMagick
 command -v convert >/dev/null 2>&1 && {
@@ -33,10 +31,21 @@ if [ ! -d "$TARGET_DIR" ];then
 fi
 
 # Generate icon
-
 info 'Generate Icon-29.png ...'
 convert "$SOURCE_FILE" -resize 29x29 "$TARGET_DIR/Icon-29.png"
 info 'Generate Icon-29@2x.png ...'
 convert "$SOURCE_FILE" -resize 58x58 "$TARGET_DIR/Icon-29@2x.png"
+info 'Generate Icon-29@3x.png ...'
+convert "$SOURCE_FILE" -resize 87x87 "$TARGET_DIR/Icon-29@3x.png"
+
+info 'Generate Icon-40@2x.png ...'
+convert "$SOURCE_FILE" -resize 80x80 "$TARGET_DIR/Icon-40@2x.png"
+info 'Generate Icon-40@3x.png ...'
+convert "$SOURCE_FILE" -resize 120x120 "$TARGET_DIR/Icon-40@3x.png"
+
+info 'Generate Icon-60@2x.png ...'
+convert "$SOURCE_FILE" -resize 120x120 "$TARGET_DIR/Icon-60@2x.png"
+info 'Generate Icon-60@3x.png ...'
+convert "$SOURCE_FILE" -resize 180x180 "$TARGET_DIR/Icon-60@3x.png"
 
 info 'Icon is ready Darth edXius!.'
